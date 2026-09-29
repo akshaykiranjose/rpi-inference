@@ -1,8 +1,10 @@
 """Batch-one CPU inference with wall-clock timings, without trace profiling."""
-
 import argparse
 import csv
+import json
+import os
 import platform
+from datetime import datetime, timezone
 from pathlib import Path
 from time import perf_counter
 
@@ -52,7 +54,10 @@ def main():
     parser.add_argument('--repeats', type=int, default=10, help='Measured passes over all images')
     parser.add_argument('--threads', type=int, default=0, help='ORT intra-op threads; 0 = ORT default')
     parser.add_argument('--csv', type=Path, help='Save each measured image timing')
+    parser.add_argument('--json', type=Path, dest='json_path',
+                        help='JSON report path; defaults beside CSV or to a timestamped file in logs/')
     args = parser.parse_args()
+    started_at = datetime.now(timezone.utc)
     if args.warmup < 0 or args.repeats < 1 or args.threads < 0:
         parser.error('warmup/threads must be >= 0 and repeats must be >= 1')
     if not args.model.is_file() or not args.images.is_dir() or not args.labels.is_file():
@@ -100,9 +105,11 @@ def main():
         print(f'{path.name:40s}' + ''.join(f' {v:10.2f}' for v in means))
     print(f'\nSummary over {len(rows)} measured images (ms):')
     print('%16s %10s %10s %10s %10s %10s' % ('Stage', 'Mean', 'Median', 'P95', 'Min', 'Max'))
+    summary = {}
     for key in keys:
         values = np.array([r[key] for r in rows])
         stats = [values.mean(), np.median(values), np.percentile(values, 95), values.min(), values.max()]
+        summary[key] = dict(zip(['mean', 'median', 'p95', 'min', 'max'], map(float, stats)))
         print(f'{key:16s}' + ''.join(f' {v:10.2f}' for v in stats))
     throughput = len(rows) * 1000 / sum(r['total_ms'] for r in rows)
     print(f'Serial processing throughput: {throughput:.2f} images/s (excludes startup/reporting)')
@@ -116,6 +123,54 @@ def main():
             writer.writeheader()
             writer.writerows(rows)
         print(f'Saved timings: {args.csv}')
+
+    report = {
+        'schema_version': 1,
+        'started_at_utc': started_at.isoformat(),
+        'platform': {
+            'hostname': platform.node(), 'os': platform.platform(),
+            'architecture': platform.machine(), 'processor': platform.processor(),
+            'logical_cpu_count': os.cpu_count(), 'python_version': platform.python_version(),
+        },
+        'runtime': {
+            'onnxruntime_version': onnxruntime.__version__,
+            'numpy_version': np.__version__, 'providers': session.get_providers(),
+            'intra_op_threads_requested': args.threads,
+            'thread_note': '0 means ONNX Runtime default, not zero active threads',
+        },
+        'model': {
+            'path': str(args.model.resolve()), 'size_bytes': args.model.stat().st_size,
+            'inputs': [dict(name=x.name, dtype=x.type, shape=x.shape) for x in session.get_inputs()],
+            'outputs': [dict(name=x.name, dtype=x.type, shape=x.shape) for x in session.get_outputs()],
+        },
+        'precision': {
+            'preprocessed_input_dtype': str(feed[input_name].dtype),
+            'internal_compute_dtype': None,
+            'note': 'Input/output types are reported above. Internal operator precision is not '
+                    'determined by this timer; quantized or mixed-precision models may differ.',
+        },
+        'benchmark': {
+            'batch_size': 1, 'image_directory': str(args.images.resolve()),
+            'image_count': len(images), 'repeats': args.repeats, 'measured_count': len(rows),
+            'warmup_calls_excluded': 1 + args.warmup,
+            'preprocessing': 'RGB, square bilinear resize 256, center crop 224, ImageNet normalization',
+            'timing_unit': 'ms', 'clock': 'time.perf_counter',
+            'timing_scope': 'Image read/preprocess, synchronous CPU session.run, softmax/top-5. '
+                            'Excludes startup and reporting; repeated reads may use filesystem cache.',
+        },
+        'session_creation_ms': load_ms,
+        'first_image_timings_ms': first,
+        'timings': summary,
+        'serial_processing_images_per_second': throughput,
+        'measurements': rows,
+    }
+    json_path = args.json_path or (args.csv.with_suffix('.json') if args.csv else
+        Path('logs') / f"benchmark_{started_at.strftime('%Y%m%dT%H%M%S%fZ')}.json")
+    if args.csv and json_path.resolve() == args.csv.resolve():
+        raise ValueError('JSON and CSV output paths must be different')
+    json_path.parent.mkdir(parents=True, exist_ok=True)
+    json_path.write_text(json.dumps(report, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+    print(f'Saved JSON report: {json_path}')
 
 
 if __name__ == '__main__':
