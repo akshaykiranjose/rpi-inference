@@ -1,0 +1,504 @@
+{
+  "schema_version": 1,
+  "started_at_utc": "2026-09-29T15:38:02.004533+00:00",
+  "platform": {
+    "hostname": "LAPTOP-KQ64PE74",
+    "os": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "architecture": "x86_64",
+    "processor": "x86_64",
+    "logical_cpu_count": 16,
+    "python_version": "3.10.21"
+  },
+  "runtime": {
+    "onnxruntime_version": "1.23.2",
+    "numpy_version": "2.2.6",
+    "providers": [
+      "CPUExecutionProvider"
+    ],
+    "intra_op_threads_requested": 0,
+    "thread_note": "0 means ONNX Runtime default, not zero active threads"
+  },
+  "model": {
+    "path": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/models/vit_l_32.onnx",
+    "size_bytes": 1228244476,
+    "inputs": [
+      {
+        "name": "x",
+        "dtype": "tensor(float)",
+        "shape": [
+          1,
+          3,
+          224,
+          224
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "name": "linear_96",
+        "dtype": "tensor(float)",
+        "shape": [
+          1,
+          1000
+        ]
+      }
+    ]
+  },
+  "precision": {
+    "preprocessed_input_dtype": "float32",
+    "internal_compute_dtype": null,
+    "note": "Input/output types are reported above. Internal operator precision is not determined by this timer; quantized or mixed-precision models may differ."
+  },
+  "benchmark": {
+    "batch_size": 1,
+    "image_directory": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data",
+    "image_count": 5,
+    "repeats": 10,
+    "measured_count": 50,
+    "warmup_calls_excluded": 4,
+    "preprocessing": "RGB, square bilinear resize 256, center crop 224, ImageNet normalization",
+    "timing_unit": "ms",
+    "clock": "time.perf_counter",
+    "timing_scope": "Image read/preprocess, synchronous CPU session.run, softmax/top-5. Excludes startup and reporting; repeated reads may use filesystem cache."
+  },
+  "session_creation_ms": 16402.263505999144,
+  "first_image_timings_ms": {
+    "preprocess_ms": 17.327038000075845,
+    "inference_ms": 185.64186000003247,
+    "postprocess_ms": 0.3057979993172921,
+    "total_ms": 203.2746959994256
+  },
+  "timings": {
+    "preprocess_ms": {
+      "mean": 7.952020720258588,
+      "median": 8.031522500459687,
+      "p95": 10.86120639974979,
+      "min": 4.67477200072608,
+      "max": 13.369635998969898
+    },
+    "inference_ms": {
+      "mean": 85.74232133985788,
+      "median": 84.08678349951515,
+      "p95": 91.22918004941312,
+      "min": 79.95537000169861,
+      "max": 126.83028600076796
+    },
+    "postprocess_ms": {
+      "mean": 0.23649972026760224,
+      "median": 0.22055050067137927,
+      "p95": 0.3161583501423592,
+      "min": 0.2029409988608677,
+      "max": 0.4889720003120601
+    },
+    "total_ms": {
+      "mean": 93.93084178038407,
+      "median": 92.4995340010355,
+      "p95": 102.657049751906,
+      "min": 85.77861199955805,
+      "max": 134.0354349995323
+    }
+  },
+  "serial_processing_images_per_second": 10.646130504590387,
+  "measurements": [
+    {
+      "repeat": 1,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00000057.JPEG",
+      "preprocess_ms": 8.626001999800792,
+      "inference_ms": 86.97332799783908,
+      "postprocess_ms": 0.24971500170067884,
+      "total_ms": 95.84904499934055
+    },
+    {
+      "repeat": 1,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00002922.JPEG",
+      "preprocess_ms": 6.952291001653066,
+      "inference_ms": 83.3785569993779,
+      "postprocess_ms": 0.2172109998355154,
+      "total_ms": 90.54805900086649
+    },
+    {
+      "repeat": 1,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00013402.JPEG",
+      "preprocess_ms": 8.641366999654565,
+      "inference_ms": 88.53490500041516,
+      "postprocess_ms": 0.21245600146357901,
+      "total_ms": 97.38872800153331
+    },
+    {
+      "repeat": 1,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00023559.JPEG",
+      "preprocess_ms": 9.979980997741222,
+      "inference_ms": 82.70733900280902,
+      "postprocess_ms": 0.245060000452213,
+      "total_ms": 92.93238000100246
+    },
+    {
+      "repeat": 1,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00030136.JPEG",
+      "preprocess_ms": 4.67477200072608,
+      "inference_ms": 83.53145599903655,
+      "postprocess_ms": 0.32380700213252567,
+      "total_ms": 88.53003500189516
+    },
+    {
+      "repeat": 2,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00000057.JPEG",
+      "preprocess_ms": 7.883843001764035,
+      "inference_ms": 83.31018199896789,
+      "postprocess_ms": 0.2691059999051504,
+      "total_ms": 91.46313100063708
+    },
+    {
+      "repeat": 2,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00002922.JPEG",
+      "preprocess_ms": 7.022814999800175,
+      "inference_ms": 86.13076799883856,
+      "postprocess_ms": 0.2131630026269704,
+      "total_ms": 93.36674600126571
+    },
+    {
+      "repeat": 2,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00013402.JPEG",
+      "preprocess_ms": 7.967010998982005,
+      "inference_ms": 83.04335399952834,
+      "postprocess_ms": 0.22115699903224595,
+      "total_ms": 91.23152199754259
+    },
+    {
+      "repeat": 2,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00023559.JPEG",
+      "preprocess_ms": 10.358432999055367,
+      "inference_ms": 83.2708250018186,
+      "postprocess_ms": 0.2103160004480742,
+      "total_ms": 93.83957400132203
+    },
+    {
+      "repeat": 2,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00030136.JPEG",
+      "preprocess_ms": 5.0502000012784265,
+      "inference_ms": 83.36285699988366,
+      "postprocess_ms": 0.22347900085151196,
+      "total_ms": 88.6365360020136
+    },
+    {
+      "repeat": 3,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00000057.JPEG",
+      "preprocess_ms": 7.969894999405369,
+      "inference_ms": 84.38598400243791,
+      "postprocess_ms": 0.25847600045381114,
+      "total_ms": 92.61435500229709
+    },
+    {
+      "repeat": 3,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00002922.JPEG",
+      "preprocess_ms": 7.019931999820983,
+      "inference_ms": 80.29254600114655,
+      "postprocess_ms": 0.20597500042640604,
+      "total_ms": 87.51845300139394
+    },
+    {
+      "repeat": 3,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00013402.JPEG",
+      "preprocess_ms": 8.123399999021785,
+      "inference_ms": 84.91217700066045,
+      "postprocess_ms": 0.40303200148628093,
+      "total_ms": 93.43860900116852
+    },
+    {
+      "repeat": 3,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00023559.JPEG",
+      "preprocess_ms": 10.412881998490775,
+      "inference_ms": 79.95537000169861,
+      "postprocess_ms": 0.24928000129875727,
+      "total_ms": 90.61753200148814
+    },
+    {
+      "repeat": 3,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00030136.JPEG",
+      "preprocess_ms": 5.1189890000387095,
+      "inference_ms": 82.27855099903536,
+      "postprocess_ms": 0.2244380011688918,
+      "total_ms": 87.62197800024296
+    },
+    {
+      "repeat": 4,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00000057.JPEG",
+      "preprocess_ms": 8.261720002337825,
+      "inference_ms": 80.78207799917436,
+      "postprocess_ms": 0.257527000940172,
+      "total_ms": 89.30132500245236
+    },
+    {
+      "repeat": 4,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00002922.JPEG",
+      "preprocess_ms": 6.9778580000274815,
+      "inference_ms": 85.26235400131554,
+      "postprocess_ms": 0.2107090003846679,
+      "total_ms": 92.45092100172769
+    },
+    {
+      "repeat": 4,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00013402.JPEG",
+      "preprocess_ms": 8.241407002060441,
+      "inference_ms": 84.50612699743942,
+      "postprocess_ms": 0.21986499996273778,
+      "total_ms": 92.9673989994626
+    },
+    {
+      "repeat": 4,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00023559.JPEG",
+      "preprocess_ms": 10.943649998807814,
+      "inference_ms": 84.97296499990625,
+      "postprocess_ms": 0.2125470018654596,
+      "total_ms": 96.12916200057953
+    },
+    {
+      "repeat": 4,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00030136.JPEG",
+      "preprocess_ms": 5.062586998974439,
+      "inference_ms": 84.10480599923176,
+      "postprocess_ms": 0.2362260020163376,
+      "total_ms": 89.40361900022253
+    },
+    {
+      "repeat": 5,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00000057.JPEG",
+      "preprocess_ms": 8.093150001514005,
+      "inference_ms": 80.00910999908228,
+      "postprocess_ms": 0.20407500051078387,
+      "total_ms": 88.30633500110707
+    },
+    {
+      "repeat": 5,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00002922.JPEG",
+      "preprocess_ms": 6.998677999945357,
+      "inference_ms": 126.83028600076796,
+      "postprocess_ms": 0.20647099881898612,
+      "total_ms": 134.0354349995323
+    },
+    {
+      "repeat": 5,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00013402.JPEG",
+      "preprocess_ms": 8.652431999507826,
+      "inference_ms": 89.7998180007562,
+      "postprocess_ms": 0.2575130019977223,
+      "total_ms": 98.70976300226175
+    },
+    {
+      "repeat": 5,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00023559.JPEG",
+      "preprocess_ms": 10.10858100198675,
+      "inference_ms": 84.04621400040924,
+      "postprocess_ms": 0.21358300000429153,
+      "total_ms": 94.36837800240028
+    },
+    {
+      "repeat": 5,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00030136.JPEG",
+      "preprocess_ms": 5.278710999846226,
+      "inference_ms": 85.81956999842077,
+      "postprocess_ms": 0.20958599998266436,
+      "total_ms": 91.30786699824966
+    },
+    {
+      "repeat": 6,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00000057.JPEG",
+      "preprocess_ms": 8.582956001191633,
+      "inference_ms": 84.90359499774058,
+      "postprocess_ms": 0.21974099945509806,
+      "total_ms": 93.70629199838731
+    },
+    {
+      "repeat": 6,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00002922.JPEG",
+      "preprocess_ms": 7.3350560014660005,
+      "inference_ms": 83.47810499981279,
+      "postprocess_ms": 0.2051619994745124,
+      "total_ms": 91.0183230007533
+    },
+    {
+      "repeat": 6,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00013402.JPEG",
+      "preprocess_ms": 7.911028998933034,
+      "inference_ms": 84.42665599795873,
+      "postprocess_ms": 0.22826400163467042,
+      "total_ms": 92.56594899852644
+    },
+    {
+      "repeat": 6,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00023559.JPEG",
+      "preprocess_ms": 10.760442000901094,
+      "inference_ms": 83.06657700086362,
+      "postprocess_ms": 0.21357299920055084,
+      "total_ms": 94.04059200096526
+    },
+    {
+      "repeat": 6,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00030136.JPEG",
+      "preprocess_ms": 4.915251000056742,
+      "inference_ms": 81.85180700093042,
+      "postprocess_ms": 0.22650800019619055,
+      "total_ms": 86.99356600118335
+    },
+    {
+      "repeat": 7,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00000057.JPEG",
+      "preprocess_ms": 8.277222998003708,
+      "inference_ms": 82.32013000088045,
+      "postprocess_ms": 0.2029409988608677,
+      "total_ms": 90.80029399774503
+    },
+    {
+      "repeat": 7,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00002922.JPEG",
+      "preprocess_ms": 7.073420001688646,
+      "inference_ms": 83.5284419990785,
+      "postprocess_ms": 0.22848699882160872,
+      "total_ms": 90.83034899958875
+    },
+    {
+      "repeat": 7,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00013402.JPEG",
+      "preprocess_ms": 8.90027900095447,
+      "inference_ms": 85.29289199941559,
+      "postprocess_ms": 0.22545299725607038,
+      "total_ms": 94.41862399762613
+    },
+    {
+      "repeat": 7,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00023559.JPEG",
+      "preprocess_ms": 10.417579000204569,
+      "inference_ms": 81.08280099986587,
+      "postprocess_ms": 0.2631230017868802,
+      "total_ms": 91.76350300185732
+    },
+    {
+      "repeat": 7,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00030136.JPEG",
+      "preprocess_ms": 4.960194000886986,
+      "inference_ms": 84.18925799924182,
+      "postprocess_ms": 0.2199340015067719,
+      "total_ms": 89.36938600163558
+    },
+    {
+      "repeat": 8,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00000057.JPEG",
+      "preprocess_ms": 8.439093999186298,
+      "inference_ms": 82.32996000151616,
+      "postprocess_ms": 0.22232799892663024,
+      "total_ms": 90.99138199962908
+    },
+    {
+      "repeat": 8,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00002922.JPEG",
+      "preprocess_ms": 7.509645998652559,
+      "inference_ms": 84.06876099979854,
+      "postprocess_ms": 0.21722499877796508,
+      "total_ms": 91.79563199722907
+    },
+    {
+      "repeat": 8,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00013402.JPEG",
+      "preprocess_ms": 8.339010000781855,
+      "inference_ms": 82.59238899699994,
+      "postprocess_ms": 0.2199440023105126,
+      "total_ms": 91.15134300009231
+    },
+    {
+      "repeat": 8,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00023559.JPEG",
+      "preprocess_ms": 11.532791002537124,
+      "inference_ms": 84.73895199858816,
+      "postprocess_ms": 0.2421630015305709,
+      "total_ms": 96.51390600265586
+    },
+    {
+      "repeat": 8,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00030136.JPEG",
+      "preprocess_ms": 4.850967001402751,
+      "inference_ms": 80.71043000018108,
+      "postprocess_ms": 0.2172149979742244,
+      "total_ms": 85.77861199955805
+    },
+    {
+      "repeat": 9,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00000057.JPEG",
+      "preprocess_ms": 8.648827999422792,
+      "inference_ms": 84.75035000083153,
+      "postprocess_ms": 0.21437499890453182,
+      "total_ms": 93.61355299915886
+    },
+    {
+      "repeat": 9,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00002922.JPEG",
+      "preprocess_ms": 7.202905999292852,
+      "inference_ms": 86.786324998684,
+      "postprocess_ms": 0.22361700030160137,
+      "total_ms": 94.21284799827845
+    },
+    {
+      "repeat": 9,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00013402.JPEG",
+      "preprocess_ms": 7.838724999601254,
+      "inference_ms": 80.67896899956395,
+      "postprocess_ms": 0.20515199867077172,
+      "total_ms": 88.72284599783598
+    },
+    {
+      "repeat": 9,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00023559.JPEG",
+      "preprocess_ms": 10.677583002689062,
+      "inference_ms": 85.13864799897419,
+      "postprocess_ms": 0.21088399807922542,
+      "total_ms": 96.02711499974248
+    },
+    {
+      "repeat": 9,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00030136.JPEG",
+      "preprocess_ms": 5.24829599817167,
+      "inference_ms": 125.02532200232963,
+      "postprocess_ms": 0.2059739999822341,
+      "total_ms": 130.47959200048354
+    },
+    {
+      "repeat": 10,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00000057.JPEG",
+      "preprocess_ms": 13.369635998969898,
+      "inference_ms": 92.29303000029176,
+      "postprocess_ms": 0.22398200235329568,
+      "total_ms": 105.88664800161496
+    },
+    {
+      "repeat": 10,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00002922.JPEG",
+      "preprocess_ms": 7.175072001700755,
+      "inference_ms": 89.92891899833921,
+      "postprocess_ms": 0.4889720003120601,
+      "total_ms": 97.59296300035203
+    },
+    {
+      "repeat": 10,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00013402.JPEG",
+      "preprocess_ms": 8.203895002225181,
+      "inference_ms": 84.12981699802913,
+      "postprocess_ms": 0.21443500008899719,
+      "total_ms": 92.5481470003433
+    },
+    {
+      "repeat": 10,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00023559.JPEG",
+      "preprocess_ms": 10.097547001350904,
+      "inference_ms": 82.48416800051928,
+      "postprocess_ms": 0.22395099949790165,
+      "total_ms": 92.80566600136808
+    },
+    {
+      "repeat": 10,
+      "image": "/mnt/c/Users/Akshay/Desktop/Coursework/Semester 3/MTP/github/inference/sample_data/ILSVRC2012_val_00030136.JPEG",
+      "preprocess_ms": 4.913024000416044,
+      "inference_ms": 85.11823700246168,
+      "postprocess_ms": 0.30680999770993367,
+      "total_ms": 90.33807100058766
+    }
+  ]
+}
