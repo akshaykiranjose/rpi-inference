@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 models/
+=======
+get_started.py
+load_save_model.py
+>>>>>>> c2abcc0 (added a .gitingore and modified filename)
 
