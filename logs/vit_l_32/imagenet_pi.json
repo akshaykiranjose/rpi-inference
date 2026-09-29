@@ -1,0 +1,504 @@
+{
+  "schema_version": 1,
+  "started_at_utc": "2026-09-29T15:33:59.571072+00:00",
+  "platform": {
+    "hostname": "raspberrypi",
+    "os": "Linux-6.12.62+rpt-rpi-2712-aarch64-with-glibc2.41",
+    "architecture": "aarch64",
+    "processor": "",
+    "logical_cpu_count": 4,
+    "python_version": "3.10.21"
+  },
+  "runtime": {
+    "onnxruntime_version": "1.23.2",
+    "numpy_version": "2.2.6",
+    "providers": [
+      "CPUExecutionProvider"
+    ],
+    "intra_op_threads_requested": 0,
+    "thread_note": "0 means ONNX Runtime default, not zero active threads"
+  },
+  "model": {
+    "path": "/home/pi/Akshay/tests/inference/models/vit_l_32.onnx",
+    "size_bytes": 1228244476,
+    "inputs": [
+      {
+        "name": "x",
+        "dtype": "tensor(float)",
+        "shape": [
+          1,
+          3,
+          224,
+          224
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "name": "linear_96",
+        "dtype": "tensor(float)",
+        "shape": [
+          1,
+          1000
+        ]
+      }
+    ]
+  },
+  "precision": {
+    "preprocessed_input_dtype": "float32",
+    "internal_compute_dtype": null,
+    "note": "Input/output types are reported above. Internal operator precision is not determined by this timer; quantized or mixed-precision models may differ."
+  },
+  "benchmark": {
+    "batch_size": 1,
+    "image_directory": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data",
+    "image_count": 5,
+    "repeats": 10,
+    "measured_count": 50,
+    "warmup_calls_excluded": 4,
+    "preprocessing": "RGB, square bilinear resize 256, center crop 224, ImageNet normalization",
+    "timing_unit": "ms",
+    "clock": "time.perf_counter",
+    "timing_scope": "Image read/preprocess, synchronous CPU session.run, softmax/top-5. Excludes startup and reporting; repeated reads may use filesystem cache."
+  },
+  "session_creation_ms": 15493.865193799138,
+  "first_image_timings_ms": {
+    "preprocess_ms": 116.32632091641426,
+    "inference_ms": 527.4183060973883,
+    "postprocess_ms": 4.515122622251511,
+    "total_ms": 648.259749636054
+  },
+  "timings": {
+    "preprocess_ms": {
+      "mean": 5.553527250885963,
+      "median": 5.58430515229702,
+      "p95": 9.248136449605223,
+      "min": 2.3607946932315826,
+      "max": 10.14694944024086
+    },
+    "inference_ms": {
+      "mean": 412.2205139324069,
+      "median": 408.89344830065966,
+      "p95": 419.8337610810995,
+      "min": 405.7159535586834,
+      "max": 493.3154471218586
+    },
+    "postprocess_ms": {
+      "mean": 0.18513347953557968,
+      "median": 0.1833336427807808,
+      "p95": 0.1962828449904918,
+      "min": 0.18013082444667816,
+      "max": 0.21690689027309418
+    },
+    "total_ms": {
+      "mean": 417.95917466282845,
+      "median": 414.717273786664,
+      "p95": 428.3599963411689,
+      "min": 408.9533556252718,
+      "max": 499.1124775260687
+    }
+  },
+  "serial_processing_images_per_second": 2.3925781765807854,
+  "measurements": [
+    {
+      "repeat": 1,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00000057.JPEG",
+      "preprocess_ms": 5.704658105969429,
+      "inference_ms": 412.2714623808861,
+      "postprocess_ms": 0.2034250646829605,
+      "total_ms": 418.17954555153847
+    },
+    {
+      "repeat": 1,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00002922.JPEG",
+      "preprocess_ms": 6.513824686408043,
+      "inference_ms": 407.83607959747314,
+      "postprocess_ms": 0.18531642854213715,
+      "total_ms": 414.5352207124233
+    },
+    {
+      "repeat": 1,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00013402.JPEG",
+      "preprocess_ms": 8.283635601401329,
+      "inference_ms": 407.86402486264706,
+      "postprocess_ms": 0.18668361008167267,
+      "total_ms": 416.33434407413006
+    },
+    {
+      "repeat": 1,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00023559.JPEG",
+      "preprocess_ms": 10.14694944024086,
+      "inference_ms": 406.89306147396564,
+      "postprocess_ms": 0.18755346536636353,
+      "total_ms": 417.22756437957287
+    },
+    {
+      "repeat": 1,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00030136.JPEG",
+      "preprocess_ms": 3.0558109283447266,
+      "inference_ms": 411.85873933136463,
+      "postprocess_ms": 0.18539093434810638,
+      "total_ms": 415.09994119405746
+    },
+    {
+      "repeat": 2,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00000057.JPEG",
+      "preprocess_ms": 5.545491352677345,
+      "inference_ms": 407.07969292998314,
+      "postprocess_ms": 0.1824796199798584,
+      "total_ms": 412.80766390264034
+    },
+    {
+      "repeat": 2,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00002922.JPEG",
+      "preprocess_ms": 4.616511985659599,
+      "inference_ms": 409.2135950922966,
+      "postprocess_ms": 0.18368475139141083,
+      "total_ms": 414.0137918293476
+    },
+    {
+      "repeat": 2,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00013402.JPEG",
+      "preprocess_ms": 5.67273236811161,
+      "inference_ms": 410.6058720499277,
+      "postprocess_ms": 0.18318556249141693,
+      "total_ms": 416.46178998053074
+    },
+    {
+      "repeat": 2,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00023559.JPEG",
+      "preprocess_ms": 7.232654839754105,
+      "inference_ms": 406.9899320602417,
+      "postprocess_ms": 0.18361210823059082,
+      "total_ms": 414.4061990082264
+    },
+    {
+      "repeat": 2,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00030136.JPEG",
+      "preprocess_ms": 2.423051744699478,
+      "inference_ms": 408.78106094896793,
+      "postprocess_ms": 0.18229521811008453,
+      "total_ms": 411.3864079117775
+    },
+    {
+      "repeat": 3,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00000057.JPEG",
+      "preprocess_ms": 5.625732243061066,
+      "inference_ms": 405.7159535586834,
+      "postprocess_ms": 0.18160976469516754,
+      "total_ms": 411.52329556643963
+    },
+    {
+      "repeat": 3,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00002922.JPEG",
+      "preprocess_ms": 4.599807783961296,
+      "inference_ms": 413.69920037686825,
+      "postprocess_ms": 0.1824796199798584,
+      "total_ms": 418.4814877808094
+    },
+    {
+      "repeat": 3,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00013402.JPEG",
+      "preprocess_ms": 5.603211000561714,
+      "inference_ms": 406.7010283470154,
+      "postprocess_ms": 0.18140673637390137,
+      "total_ms": 412.485646083951
+    },
+    {
+      "repeat": 3,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00023559.JPEG",
+      "preprocess_ms": 7.122302427887917,
+      "inference_ms": 409.72493030130863,
+      "postprocess_ms": 0.1823529601097107,
+      "total_ms": 417.02958568930626
+    },
+    {
+      "repeat": 3,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00030136.JPEG",
+      "preprocess_ms": 2.424146980047226,
+      "inference_ms": 408.8412467390299,
+      "postprocess_ms": 0.18218345940113068,
+      "total_ms": 411.44757717847824
+    },
+    {
+      "repeat": 4,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00000057.JPEG",
+      "preprocess_ms": 5.491066724061966,
+      "inference_ms": 410.1119264960289,
+      "postprocess_ms": 0.18366798758506775,
+      "total_ms": 415.78666120767593
+    },
+    {
+      "repeat": 4,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00002922.JPEG",
+      "preprocess_ms": 4.660602658987045,
+      "inference_ms": 407.38485753536224,
+      "postprocess_ms": 0.18312968313694,
+      "total_ms": 412.22858987748623
+    },
+    {
+      "repeat": 4,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00013402.JPEG",
+      "preprocess_ms": 5.6262146681547165,
+      "inference_ms": 407.30317309498787,
+      "postprocess_ms": 0.18277578055858612,
+      "total_ms": 413.1121635437012
+    },
+    {
+      "repeat": 4,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00023559.JPEG",
+      "preprocess_ms": 7.130134850740433,
+      "inference_ms": 421.36020958423615,
+      "postprocess_ms": 0.1860000193119049,
+      "total_ms": 428.6763444542885
+    },
+    {
+      "repeat": 4,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00030136.JPEG",
+      "preprocess_ms": 2.4529602378606796,
+      "inference_ms": 409.3938544392586,
+      "postprocess_ms": 0.18633343279361725,
+      "total_ms": 412.0331481099129
+    },
+    {
+      "repeat": 5,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00000057.JPEG",
+      "preprocess_ms": 5.544677376747131,
+      "inference_ms": 405.83512000739574,
+      "postprocess_ms": 0.1845192164182663,
+      "total_ms": 411.56431660056114
+    },
+    {
+      "repeat": 5,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00002922.JPEG",
+      "preprocess_ms": 4.620863124728203,
+      "inference_ms": 409.876910969615,
+      "postprocess_ms": 0.1827031373977661,
+      "total_ms": 414.68047723174095
+    },
+    {
+      "repeat": 5,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00013402.JPEG",
+      "preprocess_ms": 5.613826215267181,
+      "inference_ms": 493.3154471218586,
+      "postprocess_ms": 0.18320418894290924,
+      "total_ms": 499.1124775260687
+    },
+    {
+      "repeat": 5,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00023559.JPEG",
+      "preprocess_ms": 8.595949038863182,
+      "inference_ms": 407.9975076019764,
+      "postprocess_ms": 0.18264725804328918,
+      "total_ms": 416.77610389888287
+    },
+    {
+      "repeat": 5,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00030136.JPEG",
+      "preprocess_ms": 2.3792386054992676,
+      "inference_ms": 407.0964138954878,
+      "postprocess_ms": 0.18073990941047668,
+      "total_ms": 409.65639241039753
+    },
+    {
+      "repeat": 6,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00000057.JPEG",
+      "preprocess_ms": 7.537025958299637,
+      "inference_ms": 411.69566474854946,
+      "postprocess_ms": 0.18335320055484772,
+      "total_ms": 419.41604390740395
+    },
+    {
+      "repeat": 6,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00002922.JPEG",
+      "preprocess_ms": 5.1962509751319885,
+      "inference_ms": 406.3345640897751,
+      "postprocess_ms": 0.18414855003356934,
+      "total_ms": 411.71496361494064
+    },
+    {
+      "repeat": 6,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00013402.JPEG",
+      "preprocess_ms": 6.862472742795944,
+      "inference_ms": 406.87350556254387,
+      "postprocess_ms": 0.18331408500671387,
+      "total_ms": 413.9192923903465
+    },
+    {
+      "repeat": 6,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00023559.JPEG",
+      "preprocess_ms": 7.098525762557983,
+      "inference_ms": 408.2672446966171,
+      "postprocess_ms": 0.18390826880931854,
+      "total_ms": 415.5496787279844
+    },
+    {
+      "repeat": 6,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00030136.JPEG",
+      "preprocess_ms": 2.365516498684883,
+      "inference_ms": 474.0865137428045,
+      "postprocess_ms": 0.1864265650510788,
+      "total_ms": 476.6384568065405
+    },
+    {
+      "repeat": 7,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00000057.JPEG",
+      "preprocess_ms": 9.822152554988861,
+      "inference_ms": 417.96810179948807,
+      "postprocess_ms": 0.18309429287910461,
+      "total_ms": 427.97334864735603
+    },
+    {
+      "repeat": 7,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00002922.JPEG",
+      "preprocess_ms": 5.425415933132172,
+      "inference_ms": 409.45274382829666,
+      "postprocess_ms": 0.18361210823059082,
+      "total_ms": 415.0617718696594
+    },
+    {
+      "repeat": 7,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00013402.JPEG",
+      "preprocess_ms": 7.93917290866375,
+      "inference_ms": 411.4238917827606,
+      "postprocess_ms": 0.18290430307388306,
+      "total_ms": 419.54596899449825
+    },
+    {
+      "repeat": 7,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00023559.JPEG",
+      "preprocess_ms": 9.781744331121445,
+      "inference_ms": 409.0321883559227,
+      "postprocess_ms": 0.21690689027309418,
+      "total_ms": 419.03083957731724
+    },
+    {
+      "repeat": 7,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00030136.JPEG",
+      "preprocess_ms": 2.9653478413820267,
+      "inference_ms": 407.2813577950001,
+      "postprocess_ms": 0.18318556249141693,
+      "total_ms": 410.4298911988735
+    },
+    {
+      "repeat": 8,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00000057.JPEG",
+      "preprocess_ms": 5.565399304032326,
+      "inference_ms": 408.7200965732336,
+      "postprocess_ms": 0.18013082444667816,
+      "total_ms": 414.4656267017126
+    },
+    {
+      "repeat": 8,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00002922.JPEG",
+      "preprocess_ms": 4.663880914449692,
+      "inference_ms": 409.98898446559906,
+      "postprocess_ms": 0.1840926706790924,
+      "total_ms": 414.83695805072784
+    },
+    {
+      "repeat": 8,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00013402.JPEG",
+      "preprocess_ms": 5.666919052600861,
+      "inference_ms": 408.90444815158844,
+      "postprocess_ms": 0.1827031373977661,
+      "total_ms": 414.75407034158707
+    },
+    {
+      "repeat": 8,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00023559.JPEG",
+      "preprocess_ms": 7.139489054679871,
+      "inference_ms": 409.48826260864735,
+      "postprocess_ms": 0.18507428467273712,
+      "total_ms": 416.81282594799995
+    },
+    {
+      "repeat": 8,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00030136.JPEG",
+      "preprocess_ms": 2.3976992815732956,
+      "inference_ms": 406.3733424991369,
+      "postprocess_ms": 0.18231384456157684,
+      "total_ms": 408.9533556252718
+    },
+    {
+      "repeat": 9,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00000057.JPEG",
+      "preprocess_ms": 5.526397377252579,
+      "inference_ms": 414.68382999300957,
+      "postprocess_ms": 0.18359161913394928,
+      "total_ms": 420.3938189893961
+    },
+    {
+      "repeat": 9,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00002922.JPEG",
+      "preprocess_ms": 4.6467166393995285,
+      "inference_ms": 406.6556002944708,
+      "postprocess_ms": 0.1843869686126709,
+      "total_ms": 411.486703902483
+    },
+    {
+      "repeat": 9,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00013402.JPEG",
+      "preprocess_ms": 5.63456304371357,
+      "inference_ms": 409.7903370857239,
+      "postprocess_ms": 0.21514669060707092,
+      "total_ms": 415.6400468200445
+    },
+    {
+      "repeat": 9,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00023559.JPEG",
+      "preprocess_ms": 7.095789536833763,
+      "inference_ms": 410.36925837397575,
+      "postprocess_ms": 0.1838337630033493,
+      "total_ms": 417.64888167381287
+    },
+    {
+      "repeat": 9,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00030136.JPEG",
+      "preprocess_ms": 2.3892726749181747,
+      "inference_ms": 409.39206071197987,
+      "postprocess_ms": 0.18236972391605377,
+      "total_ms": 411.9637031108141
+    },
+    {
+      "repeat": 10,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00000057.JPEG",
+      "preprocess_ms": 5.52806444466114,
+      "inference_ms": 406.23960085213184,
+      "postprocess_ms": 0.18346309661865234,
+      "total_ms": 411.95112839341164
+    },
+    {
+      "repeat": 10,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00002922.JPEG",
+      "preprocess_ms": 4.6281591057777405,
+      "inference_ms": 406.2697123736143,
+      "postprocess_ms": 0.18229708075523376,
+      "total_ms": 411.0801685601473
+    },
+    {
+      "repeat": 10,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00013402.JPEG",
+      "preprocess_ms": 5.639564245939255,
+      "inference_ms": 412.2353717684746,
+      "postprocess_ms": 0.18109194934368134,
+      "total_ms": 418.0560279637575
+    },
+    {
+      "repeat": 10,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00023559.JPEG",
+      "preprocess_ms": 7.113972678780556,
+      "inference_ms": 406.86526522040367,
+      "postprocess_ms": 0.18363073468208313,
+      "total_ms": 414.1628686338663
+    },
+    {
+      "repeat": 10,
+      "image": "/home/pi/Akshay/tests/inference/rpi-inference/sample_data/ILSVRC2012_val_00030136.JPEG",
+      "preprocess_ms": 2.3607946932315826,
+      "inference_ms": 408.8824484497309,
+      "postprocess_ms": 0.18231384456157684,
+      "total_ms": 411.42555698752403
+    }
+  ]
+}
